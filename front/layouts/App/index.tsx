@@ -1,11 +1,15 @@
 import React from 'react';
+import loadabel from '@loadable/component';
+import { Route, Switch } from 'react-router-dom';
 
-function App() {
-    return (
-        <div>
-      코드하우스 입니다! 
-        </div>
-    );
-}
+const Home = loadabel(() => import('@layouts/Home'));
+const Login = loadabel(() => import('@pages/Login'));
+
+const App = () => (
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route path="/login" component={Login} />
+  </Switch>
+);
 
 export default App;
