@@ -9,8 +9,8 @@ import {
   Ends,
   Header,
   LeftMenu,
-  LogoImg,
   LogoTitle,
+  ThmemBtn,
   Main,
   MainContent,
   MainImg,
@@ -25,19 +25,18 @@ const Home = () => {
     <HomeWrap>
       <Header>
         <LeftMenu>
-          <Link to="/">
-            <LogoImg src="../../assets/codelog.png" />
-          </Link>
-          <LogoTitle>CodeHouse</LogoTitle>
+          <LogoTitle>
+            <Link to="/">CodeHouse</Link>
+          </LogoTitle>
         </LeftMenu>
         <RightMenu>
           <Link to="/login" role="button">
             <LoginSpan>LOGIN</LoginSpan>
           </Link>
 
-          <button>
+          <ThmemBtn>
             <DarkIcon />
-          </button>
+          </ThmemBtn>
         </RightMenu>
       </Header>
       <Main>

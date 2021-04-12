@@ -21,26 +21,47 @@ export const LeftMenu = styled.div`
   display: flex;
   align-items: center;
   margin-left: -22px;
-`;
 
-export const LogoImg = styled.img`
-  max-width: 149px;
-  max-height: 112px;
-  margin-right: -23px;
+  & a {
+    overflow: hidden;
+  }
 `;
 
 export const LogoTitle = styled.h1`
+  margin: 0;
   font-size: 43px;
+
+  & a {
+    padding-left: 85px;
+    background: url(../../assets/codelog.png) no-repeat left -10px;
+    background-size: 103px auto;
+    height: 100%;
+    display: inline-block;
+  }
 `;
 
 export const RightMenu = styled.div`
-  margin: 6px 38px 0 0px;
+  height: 100%;
+  padding-top: 15px;
+  & a {
+    height: 50px;
+    margin-right: 35px;
+    vertical-align: top;
+    /*line-height: 50px;*/
+    display: inline-block;
+  }
 `;
 
 export const LoginSpan = styled.span`
   font-size: 38px;
-  margin-right: 35px;
   font-weight: 600;
+`;
+
+export const ThmemBtn = styled.button`
+  height: 50px;
+  border: 0;
+  background: none;
+  vertical-align: middle;
 `;
 
 // export const LightIcon = styled(SunSVG)`
