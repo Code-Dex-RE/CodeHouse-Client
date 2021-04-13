@@ -1,5 +1,27 @@
 import React from 'react';
 
-const Login = () => <div>로그인 페이지 입니다!</div>;
+import {
+    LoginWrap,
+    Logo,
+    FormWrap,
+    Title,
+    Descript,
+    KakaoBtn,
+    GithubBtn
+} from './styles';
+
+const Login = () => {
+    return(
+        <LoginWrap>
+            <Logo>CodeHouse</Logo>
+            <FormWrap>
+                <Title>Welcome to CodeHouse!</Title>
+                <Descript>Login to Enjoy CodeHouse</Descript>
+            </FormWrap>
+            <KakaoBtn />
+            <GithubBtn />
+        </LoginWrap>
+    );
+};
 
 export default Login;
