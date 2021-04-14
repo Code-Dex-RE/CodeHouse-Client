@@ -104,9 +104,13 @@ export const CreateBtn = styled.button`
   border-radius: 10px;
   color: FFFFFF;
   background-color: 333333;
-  border: none;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
   cursor: pointer;
+  &:hover {
+    background-color: ffffff;
+    color: 333333;
+    border: 333333;
+  }
 `;
 export const JoinBtn = styled.button`
   width: 575px;
@@ -114,9 +118,13 @@ export const JoinBtn = styled.button`
   margin-left: 5px;
   font-size: 35px;
   border-radius: 10px;
-  color: FFFFFF;
+  color: ffffff;
   background-color: 333333;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-  border: none;
   cursor: pointer;
+  &:hover {
+    background-color: ffffff;
+    color: 333333;
+    border: 333333;
+  }
 `;
