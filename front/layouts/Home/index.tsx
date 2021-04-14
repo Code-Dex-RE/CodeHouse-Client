@@ -33,7 +33,6 @@ const Home = () => {
           <Link to="/login" role="button">
             <LoginSpan>LOGIN</LoginSpan>
           </Link>
-
           <ThmemBtn>
             <DarkIcon />
           </ThmemBtn>
@@ -48,7 +47,9 @@ const Home = () => {
         <MainImg src="../../assets/mainImg.jpeg" />
         <Ends>
           <CreateBtn>Create Room</CreateBtn>
-          <JoinBtn>Join Room</JoinBtn>
+          <Link to="/join" role="button">
+            <JoinBtn>Join Room</JoinBtn>
+          </Link>
         </Ends>
       </Main>
     </HomeWrap>
