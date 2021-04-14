@@ -17,7 +17,6 @@ import {
   MainTitle,
   RightMenu,
   HomeWrap,
-  LoginSpan,
 } from './styles';
 
 const Home = () => {
@@ -30,9 +29,6 @@ const Home = () => {
           </LogoTitle>
         </LeftMenu>
         <RightMenu>
-          <Link to="/login" role="button">
-            <LoginSpan>LOGIN</LoginSpan>
-          </Link>
           <ThmemBtn>
             <DarkIcon />
           </ThmemBtn>
