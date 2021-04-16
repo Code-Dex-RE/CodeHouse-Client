@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import loadabel from '@loadable/component';
 
 const RoomList = loadabel(() => import('@components/RoomList'));
+const CreateRoom = loadabel(() => import('@components/CreateRoom'));
 
 import {
     JoinWrap,
@@ -15,6 +16,15 @@ import {
 } from './styles';
 
 const Join = () => {
+    const [ modalOpen, setModalOpen ] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    }
+    const closeModal = () => {
+        setModalOpen(false);
+    }
+
     return(
         <JoinWrap>
             <Header>
@@ -27,7 +37,8 @@ const Join = () => {
             <RoomWrap>
                 <RoomList>룸리스트 컴포넌트</RoomList>
             </RoomWrap>
-            <CreateBtn>Create Room</CreateBtn>
+            <CreateBtn onClick={ openModal }>Create Room</CreateBtn>
+            <CreateRoom open={ modalOpen } close={ closeModal }></CreateRoom>
         </JoinWrap>
     );
 };

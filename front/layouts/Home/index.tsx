@@ -42,7 +42,9 @@ const Home = () => {
         </MainContent>
         <MainImg src="../../assets/mainImg.jpeg" />
         <Ends>
-          <CreateBtn>Create Room</CreateBtn>
+          <Link to="/create"> {/* 지우기 */}
+            <CreateBtn>Create Room</CreateBtn>
+          </Link>
           <Link to="/join" role="button">
             <JoinBtn>Join Room</JoinBtn>
           </Link>
