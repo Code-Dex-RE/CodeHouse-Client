@@ -26,6 +26,7 @@ const Join = () => {
     }
 
     return(
+        <>
         <JoinWrap>
             <Header>
                 <Link to="/">
@@ -38,8 +39,9 @@ const Join = () => {
                 <RoomList>룸리스트 컴포넌트</RoomList>
             </RoomWrap>
             <CreateBtn onClick={ openModal }>Create Room</CreateBtn>
-            <CreateRoom open={ modalOpen } close={ closeModal }></CreateRoom>
         </JoinWrap>
+        {modalOpen ? <CreateRoom open={ modalOpen } close={ closeModal }></CreateRoom> : null}
+        </>
     );
 };
 

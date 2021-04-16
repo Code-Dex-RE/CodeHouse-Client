@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export const Background = styled.div`
+export const CreateWrap = styled.div`
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
     background-color: 000000;
-    opacity: 0.7;
 `;
 
-export const CreateWrap = styled.div`
+export const Modal = styled.div`
     position: absolute;
     top: 20%; bottom: 0; left: 0; right: 0;
     width: 50%;
@@ -51,6 +51,7 @@ export const Name = styled.input`
     width: 100%;
     height: 40%;
     border: 2px solid #333;
+    font-size: 1.75rem;
 `;
 
 export const Descript = styled.input`
@@ -59,6 +60,7 @@ export const Descript = styled.input`
     width: 100%;
     height: 40%;
     border: 2px solid #333;
+    font-size: 1.75rem;
 `;
 
 export const BtnWrap = styled.div`

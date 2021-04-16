@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-    Background,
     CreateWrap,
+    Modal,
     CloseBtn,
     Title,
     Form,
@@ -13,24 +13,27 @@ import {
     CreateBtn,
 } from './CreateStyles';
 
-const CreateRoom = ({ open, close }) => {
+interface CreateRoomProps {
+    open : boolean,
+    close : any,
+}
 
+const CreateRoom = ({ close }: CreateRoomProps ) => {
     return(
-        <div {open}>
-            <Background></Background>
-            <CreateWrap>
-                <CloseBtn onClick={close}></CloseBtn>
+        <CreateWrap> 
+            <Modal>
+                <CloseBtn type="button" onClick={ close }></CloseBtn>
                 <Title>Create Your Room!</Title>
                 <Form>
                     <Name type="text" placeholder="Name"></Name>
                     <Descript type="text" placeholder="Description"></Descript>
                 </Form>
                 <BtnWrap>
-                    <CancelBtn>Cancel</CancelBtn>
+                    <CancelBtn type="button" onClick={ close }>Cancel</CancelBtn>
                     <CreateBtn>Create</CreateBtn>
                 </BtnWrap>
-            </CreateWrap>
-        </div>
+            </Modal>
+        </CreateWrap>
     );
 };
 
