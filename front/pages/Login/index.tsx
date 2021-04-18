@@ -17,7 +17,7 @@ const Login = () => {
     (id) => () => {
       if (parseInt(id) === 2) {
         console.log('why not', id);
-        return console.log('why!!!');
+        return <Redirect to="/signup" />;
       } else if (parseInt(id) === 1) {
         axios.post(`/api/oauth/login/${id}`).then((res) => {
           if (res.status === 200) {
@@ -37,7 +37,7 @@ const Login = () => {
   if (isLogIn) {
     // console.log('login',login);
     console.log('2', isLogIn);
-    return <Redirect to="/" />;
+    return <Redirect from="/login" to="/signup" />;
   }
 
   return (
