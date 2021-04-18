@@ -52,9 +52,44 @@ export const RightMenu = styled.div`
   }
 `;
 
-export const LoginSpan = styled.span`
-  font-size: 38px;
-  font-weight: 600;
+export const ProfileImg = styled.img`
+width: 40px;
+height: 40px;
+border-radius: 7px;
+}
+`;
+
+export const ProfileModal = styled.div`
+  display: flex;
+  padding: 20px;
+  width: 200px;
+
+  & img {
+    width: 20px;
+    height: 20px;
+    border-radius: 7px;
+  }
+
+  & > div {
+    flex-direction: column;
+    margin-left: 10px;
+    display: inline-block;
+    width: 200px;
+  }
+
+  & #profile-name {
+    font-weight: bold;
+    display: block;
+  }
+  & #profile-profile {
+    font-size: 13px;
+    display: block;
+  }
+  & #profile-active {
+    font-size: 13px;
+    margin-top: 10px;
+    display: block;
+  }
 `;
 
 export const ThmemBtn = styled.button`
