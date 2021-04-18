@@ -15,10 +15,7 @@ const Login = () => {
 
   const onClickOauth = useCallback(
     (id) => () => {
-      if (parseInt(id) === 2) {
-        console.log('why not', id);
-        return <Redirect to="/signup" />;
-      } else if (parseInt(id) === 1) {
+      if (parseInt(id) === 1) {
         axios.post(`/api/oauth/login/${id}`).then((res) => {
           if (res.status === 200) {
             console.log(login({ name: res.data[0].name, email: res.data[0].email }));
@@ -37,7 +34,7 @@ const Login = () => {
   if (isLogIn) {
     // console.log('login',login);
     console.log('2', isLogIn);
-    return <Redirect from="/login" to="/signup" />;
+    return <Redirect to="/" />;
   }
 
   return (
@@ -50,7 +47,9 @@ const Login = () => {
         <Descript>Login to Enjoy CodeHouse</Descript>
       </ContactWrap>
       <KakaoBtn onClick={onClickOauth(1)} />
-      <GithubBtn onClick={onClickOauth(2)} />
+      <Link to="/signup">
+        <GithubBtn />
+      </Link>
 
       <div>{isLogIn}</div>
     </LoginWrap>

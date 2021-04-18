@@ -25,9 +25,7 @@ const SignUp = () => {
   //   },
   //   [],
   // );
-  if (!isLoggin) {
-    return <Redirect to="/login" />;
-  }
+
   return (
     <SignUpWrap>
       <Header>
