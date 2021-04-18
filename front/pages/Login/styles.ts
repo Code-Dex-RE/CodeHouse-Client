@@ -5,12 +5,19 @@ export const LoginWrap = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1160px;
-  top: 0; left: 0; bottom: 0; right: 0; margin: 0 auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
 `;
 
 export const Logo = styled.div`
   position: relative;
-  top: calc(10%); left: 0; bottom: 0; right: 0;
+  top: calc(10%);
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 300px;
   height: 50px;
   margin: 0 auto;
@@ -22,19 +29,25 @@ export const Logo = styled.div`
   line-height: 43px;
 `;
 
-export const FormWrap = styled.div`
+export const ContactWrap = styled.div`
   position: relative;
-  top: calc(15%); left: 0; bottom: 0; right: 0;
+  top: calc(15%);
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 70%;
   margin: 0 auto;
   background-color: #333333;
   border-radius: 18px;
 `;
-    
+
 export const Title = styled.h1`
   position: relative;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 600px;
   margin: 0 auto;
   padding-top: 80px;
@@ -44,7 +57,10 @@ export const Title = styled.h1`
 
 export const Descript = styled.p`
   position: relative;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 530px;
   margin: 0 auto;
   font-size: 42px;
@@ -53,7 +69,10 @@ export const Descript = styled.p`
 
 export const KakaoBtn = styled.div`
   position: relative;
-  top: -20%; left: 0; bottom: 0; right: 0;
+  top: -20%;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 600px;
   height: 90px;
   margin: 0 auto;
@@ -63,7 +82,10 @@ export const KakaoBtn = styled.div`
 
 export const GithubBtn = styled.div`
   position: relative;
-  top: -17%; left: 0; bottom: 0; right: 0;
+  top: -17%;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 600px;
   height: 90px;
   margin: 0 auto;

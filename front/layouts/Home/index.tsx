@@ -1,11 +1,15 @@
+
+import React, { useCallback, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { ReactComponent as LightIcon } from '@assets/sun.svg';
+import { ReactComponent as DarkIcon } from '@assets/moon.svg';
+import useUser from '@hooks/userHook';
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import loadabel from '@loadable/component';
 import { ReactComponent as LightIcon } from '@assets/sun.svg';
 import { ReactComponent as DarkIcon } from '@assets/moon.svg';
-
-const CreateRoom = loadabel(() => import('@components/CreateRoom'));
-
+import CreateRoom from '@components/CreateRoom'
 import {
   CreateBtn,
   JoinBtn,
@@ -20,10 +24,65 @@ import {
   MainTitle,
   RightMenu,
   HomeWrap,
+  ProfileModal,
+  ProfileImg,
+
 } from './styles';
+import ProfileMenu from '@components/ProfileMenu';
 
 const Home = () => {
+
+  const { isLogIn, login, userData } = useUser();
+  const [showProfile, setShowProfile] = useState(false);
+
+  // setUserData(login);
+
+  const onClickProfile = useCallback(() => {
+    setShowProfile((prev) => !prev);
+  }, []);
+
+  console.log(userData);
+  if (!isLogIn) {
+    return <Redirect to="/login" />;
+  }
+
+  return (
+    <HomeWrap>
+      <Header>
+        <LeftMenu>
+          <LogoTitle>
+            <Link to="/">CodeHouse</Link>
+          </LogoTitle>
+        </LeftMenu>
+        <RightMenu>
+          {userData && (
+            <span onClick={onClickProfile}>
+              <ProfileImg src="../../assets/profileimg.png" />
+            </span>
+          )}
+
+          {showProfile && (
+            <ProfileMenu style={{ right: 0, top: 38 }} show={showProfile} onCloseModal={onClickProfile}>
+              <ProfileModal>
+                <img src="../../assets/profileimg.png" alt={userData.name} />
+                <div>
+                  <span id="profile-name">{userData.name}</span>
+                  <span id="proifle-proflie">
+                    <img src="../../assets/user.svg" />
+                    Profile
+                  </span>
+
+                  <span id="profile-active">
+                    <img src="../../assets/log-out.svg" />
+                    Logout
+                  </span>
+                </div>
+              </ProfileModal>
+            </ProfileMenu>
+          )}
+
   const [ modalOpen, setModalOpen ] = useState(false);
+
 
   const openModal = () => {
       setModalOpen(true);

@@ -7,7 +7,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 // import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import WebpackBar from 'webpackbar';
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const WebpackBar = require('webpackbar');
 
@@ -16,6 +16,8 @@ interface Configuration extends WebpackConfiguration {
 }
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
+
+console.log(isDevelopment);
 
 const config: Configuration = {
   name: 'codehouse',
@@ -77,7 +79,7 @@ const config: Configuration = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new WebpackBar({
       name: '🚚 building Client...',
       color: '#FFA500',
@@ -92,6 +94,7 @@ const config: Configuration = {
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
   ],
   entry: { app: './client' },
+
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
