@@ -6,6 +6,7 @@ const Home = loadabel(() => import('@layouts/Home'));
 const Login = loadabel(() => import('@pages/Login'));
 const SignUp = loadabel(() => import('@pages/SignUp'));
 const Join = loadabel(() => import('@pages/Join'));
+const Profile = loadabel(() => import('@pages/Profile'));
 
 const App = () => (
   <Switch>
@@ -13,6 +14,7 @@ const App = () => (
     <Route path="/signup" component={SignUp} />
     <Route path="/join" component={Join} />
     <Route exact path="/" component={Home} />
+    <Route exact path="/profile" component={Profile} />
   </Switch>
 );
 
