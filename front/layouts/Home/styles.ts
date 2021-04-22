@@ -7,7 +7,11 @@ export const HomeWrap = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1160px;
-  top: 0; left: 0; bottom: 0; right: 0; margin: 0 auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
 `;
 
 export const Header = styled.header`
@@ -54,13 +58,17 @@ export const RightMenu = styled.div`
     /*line-height: 50px;*/
     display: inline-block;
   }
+
+  & > span {
+    margin-right: 21px;
+  }
 `;
 
-
 export const ProfileImg = styled.img`
+vertical-align: middle;
 width: 40px;
 height: 40px;
-border-radius: 7px;
+border-radius: 20px;
 }
 `;
 
@@ -69,16 +77,13 @@ export const ProfileModal = styled.div`
   padding: 20px;
   width: 200px;
 
-  & img {
-    width: 20px;
-    height: 20px;
-    border-radius: 7px;
+  & > img {
+    width: 40px;
+    height: 28px;
+    border-radius: 15px;
   }
 
   & > div {
-    flex-direction: column;
-    margin-left: 10px;
-    display: inline-block;
     width: 200px;
   }
 
@@ -145,7 +150,7 @@ export const CreateBtn = styled.button`
   border-radius: 10px;
   color: FFFFFF;
   background-color: 333333;
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   &:hover {
     background-color: ffffff;
@@ -161,7 +166,7 @@ export const JoinBtn = styled.button`
   border-radius: 10px;
   color: ffffff;
   background-color: 333333;
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   &:hover {
     background-color: ffffff;
