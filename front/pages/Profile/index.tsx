@@ -8,16 +8,23 @@ import{
     ProfileWrap,
     Header,
     Logo,
+    MainWrap,
     ModifyWrap,
     RoomWrap,
     ProfileImg,
     ImgDeleteBtn,
     ImgModifyBtn,
     UserName,
+    NameEdit,
     UserDescript,
+    DescriptEdit,
     SaveBtn,
     MicBtn,
     VolumeBtn,
+    RoomContainer,
+    RoomTitle,
+    AddRoom,
+    ExitBtn,
 } from './style';
 
 const Profile = () => {
@@ -28,19 +35,28 @@ const Profile = () => {
                     <Logo>CodeHouse</Logo>
                 </Link>
             </Header>
-            <ModifyWrap>
-                <ProfileImg src="../../assets/profileimg.png" />
-                <ImgDeleteBtn>이미지 제거</ImgDeleteBtn>
-                <ImgModifyBtn>이미지 수정</ImgModifyBtn>
-                <UserName></UserName>
-                <UserDescript></UserDescript>
-                <SaveBtn>프로필 저장</SaveBtn>
-                <MicBtn>음성 설정</MicBtn>
-                <VolumeBtn>소리 설정</VolumeBtn>
-            </ModifyWrap>
-            <RoomWrap>
-                <RoomList>룸리스트 컴포넌트</RoomList>
-            </RoomWrap>
+            <MainWrap>
+                <ModifyWrap>
+                    <ProfileImg src="../../assets/profileimg.png" />
+                    <ImgDeleteBtn>이미지 제거</ImgDeleteBtn>
+                    <ImgModifyBtn>이미지 수정</ImgModifyBtn>
+                    <UserName>CodeMonkey</UserName>
+                    <NameEdit src="../../assets/edit.png"/>
+                    <UserDescript>Hello~ asjfdkla;sdfkjal;djl</UserDescript>
+                    <DescriptEdit src="../../assets/edit.png"/>
+                    <SaveBtn>프로필 저장</SaveBtn>
+                    <MicBtn>음성 설정</MicBtn>
+                    <VolumeBtn>소리 설정</VolumeBtn>
+                </ModifyWrap>
+                <RoomWrap>
+                    <RoomContainer>
+                        <RoomTitle>참여중인방(제목)</RoomTitle>
+                        <ExitBtn>나가기</ExitBtn>
+                        <AddRoom>Rooms</AddRoom>
+                        <RoomList/>
+                    </RoomContainer>
+                </RoomWrap>
+            </MainWrap>
         </ProfileWrap>
     );
 }
