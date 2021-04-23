@@ -8,14 +8,15 @@ export const userHandlers = [
     const { id } = req.params;
     console.log(id);
 
+    if (parseInt(id) === 2) {
+      return res(ctx.status(200), ctx.json([{ client_id: 2, name: 'codeMonkey2', email: 'test2@gmail.com' }]));
+    }
+
     if (parseInt(id) === 1) {
       return res(
         ctx.status(200),
         ctx.json([{ client_id: 1, name: 'codeMonkey', email: 'test@gamil.com', token: TEST_TOKEN }]),
       );
     }
-  }),
-  rest.post(`/api/oatuh/signup`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({ token: TEST_TOKEN }));
   }),
 ];

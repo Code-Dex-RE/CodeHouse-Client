@@ -1,48 +1,66 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import loadabel from '@loadable/component';
-
-const RoomList = loadabel(() => import('@components/RoomList'));
-const CreateRoom = loadabel(() => import('@components/CreateRoom'));
-
-import {
-    JoinWrap,
-    Header,
-    Logo,
-    Profile,
-    RefreshBtn,
-    RoomWrap,
-    CreateBtn
-} from './styles';
+import RoomList from '@components/RoomList';
+import CreateRoom from '@components/CreateRoom';
+import { ReactComponent as LightIcon } from '@assets/sun.svg';
+import { ReactComponent as DarkIcon } from '@assets/moon.svg';
+import { JoinWrap, RefreshBtn, RoomWrap, CreateBtn } from './styles';
+import { Header, LeftMenu, LogoTitle, ProfileImg, RightMenu, ThmemBtn } from '@layouts/Home/styles';
+import ProfileMenu from '@components/ProfileMenu';
+import useUser from '@hooks/userHook';
 
 const Join = () => {
-    const [ modalOpen, setModalOpen ] = useState(false);
+  const { isLogIn, login, userData } = useUser();
+  const [showProfile, setShowProfile] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-    const openModal = () => {
-        setModalOpen(true);
-    }
-    const closeModal = () => {
-        setModalOpen(false);
-    }
+  // setUserData(login);
 
-    return(
-        <>
-        <JoinWrap>
-            <Header>
-                <Link to="/">
-                    <Logo>CodeHouse</Logo>
-                </Link>
-                <Profile>프로필</Profile>
-            </Header>
-            <RefreshBtn>Refresh</RefreshBtn>
-            <RoomWrap>
-                <RoomList>룸리스트 컴포넌트</RoomList>
-            </RoomWrap>
-            <CreateBtn onClick={ openModal }>Create Room</CreateBtn>
-        </JoinWrap>
-        {modalOpen ? <CreateRoom open={ modalOpen } close={ closeModal }></CreateRoom> : null}
-        </>
-    );
+  const onClickProfile = useCallback(() => {
+    setShowProfile((prev) => !prev);
+  }, []);
+
+  const onClickCreate = useCallback(() => {
+    setModalOpen((prev) => !prev);
+  }, []);
+
+  const toggleModal = useCallback(() => {
+    setModalOpen(false);
+  }, []);
+
+  console.log(userData);
+  if (!isLogIn) {
+    return <Redirect to="/login" />;
+  }
+
+  return (
+    <JoinWrap>
+      <Header>
+        <LeftMenu>
+          <LogoTitle>
+            <Link to="/">CodeHouse</Link>
+          </LogoTitle>
+        </LeftMenu>
+        <RightMenu>
+          {userData && (
+            <span onClick={onClickProfile}>
+              <ProfileImg src="../../assets/profileimg.png" />
+            </span>
+          )}
+          {showProfile && <ProfileMenu show={showProfile} onCloseModal={onClickProfile} userName={userData.name} />}
+          <ThmemBtn>
+            <DarkIcon />
+          </ThmemBtn>
+        </RightMenu>
+      </Header>
+      <RefreshBtn>Refresh</RefreshBtn>
+      <CreateBtn onClick={onClickCreate}>Create Room</CreateBtn>
+
+      <RoomWrap></RoomWrap>
+      {modalOpen ? <CreateRoom show={modalOpen} onCloseModal={toggleModal}></CreateRoom> : null}
+    </JoinWrap>
+  );
 };
 
 export default Join;

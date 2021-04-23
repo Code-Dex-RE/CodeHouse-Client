@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
+import useUser from '@hooks/userHook';
 import {
   CancleBtn,
   Header,
@@ -16,15 +17,17 @@ import {
 } from './style';
 
 const SignUp = () => {
-  const isLoggin = false;
-  // const onTest = useCallback(
-  //   (id) => () => {
-  //     if (id === 2) {
-  //       return <Redirect to="/login" />;
-  //     }
-  //   },
-  //   [],
-  // );
+  const { userData, isLogIn } = useUser();
+  const [isSign, setSing] = useState(true);
+  const [userName, setUserName] = useState('');
+
+  // if (userData) {
+  //   setUserName(userData.name);
+  // }
+
+  if (isSign && !isLogIn) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <SignUpWrap>
@@ -35,12 +38,11 @@ const SignUp = () => {
       <SignUpForm>
         <NameColum>
           <Label>Name</Label>
-          <Input type="text" />
+          {userData && <Input type="text" value={userData.name} />}
         </NameColum>
         <EmailColum>
           <Label>email</Label>
-
-          <Input type="email" />
+          {userData && <Input type="email" value={userData.email} readOnly />}
         </EmailColum>
         <BioColum>
           <Label>Bio</Label>
