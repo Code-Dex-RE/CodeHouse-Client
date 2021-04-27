@@ -25,9 +25,9 @@ const SignUp = () => {
   //   setUserName(userData.name);
   // }
 
-  if (isSign && !isLogIn) {
-    return <Redirect to="/login" />;
-  }
+  // if (isSign && !isLogIn) {
+  //   return <Redirect to="/login" />;
+  // }
 
   return (
     <SignUpWrap>

@@ -105,11 +105,11 @@ const config: Configuration = {
     port: 8000,
     publicPath: '/dist/',
     // proxy: {
-    //     '/api/': {
-    //       target: 'http://localhost:3095',
-    //       changeOrigin: true,
-    //     },
+    //   '/api/': {
+    //     target: 'https://localhost:3333',
+    //     changeOrigin: true,
     //   },
+    // },
   },
 };
 

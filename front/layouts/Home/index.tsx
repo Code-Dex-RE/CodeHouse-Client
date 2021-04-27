@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Link, Redirect, Router } from 'react-router-dom';
+import { Link, Redirect, Router, Switch } from 'react-router-dom';
 import useUser from '@hooks/userHook';
 
 import loadabel from '@loadable/component';
@@ -20,7 +20,6 @@ import {
   MainTitle,
   RightMenu,
   HomeWrap,
-  ProfileModal,
   ProfileImg,
 } from './styles';
 import ProfileMenu from '@components/ProfileMenu';

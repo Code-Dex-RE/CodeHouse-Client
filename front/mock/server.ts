@@ -1,7 +1,7 @@
-import { setupWorker } from 'msw';
+// import { setupWorker } from 'msw';
 
-import { userHandlers } from './handlers/user';
+// import { userHandlers } from './handlers/user';
 
-export const handlers = userHandlers;
+// export const handlers = userHandlers;
 
-export const worker = setupWorker(...handlers);
+// export const worker = setupWorker(...handlers);

@@ -3,6 +3,7 @@ import { ProfileIcon } from '../ProfileIcon';
 import { CreateMenu, ModalWrap, ProfileWrap } from './styles';
 import LogOutSVG from '@assets/icons/LogOutSVG';
 import ProfileSVG from '@assets/icons/ProfileSVG';
+import { Link } from 'react-router-dom';
 
 interface Props {
   show: boolean;
@@ -21,7 +22,9 @@ const ProfileMenu: FC<Props> = ({ show, onCloseModal, userName }) => {
       <ModalWrap onClick={stopPropagation}>
         <ProfileWrap>
           <ProfileIcon icon={<img src="../../../assets/profileimg.png" />} label={userName} />
-          <ProfileIcon icon={<ProfileSVG />} label={'profile'} />
+          <Link to="/profile" style={{ margin: 0 }}>
+            <ProfileIcon icon={<ProfileSVG />} label={'profile'} />
+          </Link>
           <ProfileIcon icon={<LogOutSVG />} label={'Logout'} />
         </ProfileWrap>
       </ModalWrap>
