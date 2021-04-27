@@ -38,9 +38,7 @@ const Login = ({ history }: RouteComponentProps) => {
   // );
 
   const onClickGithub = useCallback(() => {
-    axios
-      .get('https://localhost:3333/api/auth/github/callback', { withCredentials: true })
-      .then((res) => console.log(res.data));
+    axios.get('/api/', { withCredentials: true }).then((res) => console.log(res.data));
   }, []);
 
   const onClickKAKAO = useCallback(() => {
@@ -70,10 +68,10 @@ const Login = ({ history }: RouteComponentProps) => {
       {/* <Link to="/signup">
         <GithubBtn />
       </Link> */}
-      {/* <GithubBtn onClick={onClickGithub} /> */}
-      <a href="https://localhost:3333/api/auth/github/callback">
+      <GithubBtn onClick={onClickGithub} />
+      {/* <a href="https://localhost:3333/api/auth/github/callback">
         <GithubBtn />
-      </a>
+      </a> */}
     </LoginWrap>
   );
 };

@@ -6,6 +6,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 // import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import WebpackBar from 'webpackbar';
+import fs from 'fs';
 
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -23,6 +24,7 @@ const config: Configuration = {
   name: 'codehouse',
   mode: isDevelopment ? 'development' : 'production',
   devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
+
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
@@ -104,12 +106,13 @@ const config: Configuration = {
     historyApiFallback: true, //react router
     port: 8000,
     publicPath: '/dist/',
-    // proxy: {
-    //   '/api/': {
-    //     target: 'https://localhost:3333',
-    //     changeOrigin: true,
-    //   },
-    // },
+    proxy: {
+      '/api/': {
+        target: 'https://localhost:3333',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 };
 
