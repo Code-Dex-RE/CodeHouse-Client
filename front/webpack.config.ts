@@ -108,7 +108,7 @@ const config: Configuration = {
     publicPath: '/dist/',
     proxy: {
       '/api/': {
-        target: 'https://localhost:3333',
+        target: 'http://localhost:3333',
         changeOrigin: true,
         secure: false,
       },

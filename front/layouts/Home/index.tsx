@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { Link, Redirect, Router, Switch } from 'react-router-dom';
 import useUser from '@hooks/userHook';
-
+import { useQuery } from 'react-query';
+import axios, { AxiosResponse } from 'axios';
 import loadabel from '@loadable/component';
 import { ReactComponent as LightIcon } from '@assets/sun.svg';
 import { ReactComponent as DarkIcon } from '@assets/moon.svg';
+
 import CreateRoom from '@components/CreateRoom';
 import {
   CreateBtn,
@@ -25,11 +27,12 @@ import {
 import ProfileMenu from '@components/ProfileMenu';
 
 const Home = () => {
-  const { isLogIn, login, userData } = useUser();
   const [showProfile, setShowProfile] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
-  // setUserData(login);
+  const getUser = () => {
+    return axios.get('/api/auth/me').then((res: AxiosResponse) => res.data);
+  };
+  const { data: userData, error } = useQuery('uers', getUser);
 
   const onClickProfile = useCallback(() => {
     setShowProfile((prev) => !prev);
@@ -43,10 +46,9 @@ const Home = () => {
     setModalOpen(false);
   }, []);
 
-  console.log(userData);
-  if (!isLogIn) {
-    return <Redirect to="/login" />;
-  }
+  // if (userData) {
+  //   return <Redirect to="/login" />;
+  // }
 
   return (
     <HomeWrap>
