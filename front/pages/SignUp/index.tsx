@@ -32,7 +32,7 @@ const SignUp = () => {
   return (
     <SignUpWrap>
       <Header>
-        <h2>Welcom CodeHouse</h2>
+        <h2>Welcome to CodeHouse</h2>
         <h3>please input basic member information</h3>
       </Header>
       <SignUpForm>
