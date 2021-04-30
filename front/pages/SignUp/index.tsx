@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, ChangeEvent } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
-import { useCookies } from 'react-cookie';
+import { useCookies, Cookies } from 'react-cookie';
 import useInput from '@hooks/useInput';
 import { useQuery } from 'react-query';
 
@@ -27,9 +27,19 @@ const SignUp = () => {
   const [email, onChangeEmail, setEmail] = useInput('');
   const [bio, onChangeBio] = useInput('');
 
-  const { data: userData, error } = useQuery('suceessUser', async () => {
-    axios.get('api/auth/me');
-  });
+  const [cookies, setCookie] = useCookies(['jwt']);
+
+  const config = {
+    headers: { Authorization: `Bearer ${cookies.jwt}` },
+  };
+
+  const bodyParameters = {
+    name: name,
+    bio: bio,
+  };
+
+  console.log('jwt', cookies);
+  console.log(cookies.jwt);
 
   useEffect(() => {
     axios.get('/api/auth/me', { withCredentials: true }).then((res: AxiosResponse) => {
@@ -41,24 +51,24 @@ const SignUp = () => {
   console.log();
 
   const onSubmit = useCallback(() => {
-    axios
-      .post(`/api/auth`, { name, bio })
+    return axios
+      .post(`/api/auth`, bodyParameters, config)
       .then((res) => {
-        // axios.defaults.headers.common['Authoriztion'] = `Bears ${token}`;
+        console.log(res.headers);
 
         setSignUpSuccess(true);
       })
       .catch((error) => {
         setSignUpError(error.response?.data?.statusCode === 403);
       });
-  }, [name, email, bio]);
+  }, [name, bio]);
 
   console.log('성공', singUpSuccess);
   console.log('에러', singUpError);
 
-  if (userData) {
-    return <Redirect to="/" />;
-  }
+  // if (userData) {
+  //   return <Redirect to="/" />;
+  // }
   return (
     <SignUpWrap>
       <Header>

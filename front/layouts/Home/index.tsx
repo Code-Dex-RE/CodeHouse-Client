@@ -6,6 +6,7 @@ import axios, { AxiosResponse } from 'axios';
 import loadabel from '@loadable/component';
 import { ReactComponent as LightIcon } from '@assets/sun.svg';
 import { ReactComponent as DarkIcon } from '@assets/moon.svg';
+import { useCookies, Cookies } from 'react-cookie';
 
 import CreateRoom from '@components/CreateRoom';
 import {
@@ -29,10 +30,15 @@ import ProfileMenu from '@components/ProfileMenu';
 const Home = () => {
   const [showProfile, setShowProfile] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const getUser = () => {
-    return axios.get('/api/auth/me').then((res: AxiosResponse) => res.data);
+  const [cookies, setCookie] = useCookies(['jwt']);
+  const config = {
+    headers: { Authorization: `Bearer ${cookies.jwt}` },
   };
-  const { data: userData, error } = useQuery('uers', getUser);
+
+  const getUser = () => {
+    return axios.get('/api/auth/me/jwt', config).then((res: AxiosResponse) => res.data);
+  };
+  const { data: userData, error } = useQuery(['uers', { status: true }], getUser);
 
   const onClickProfile = useCallback(() => {
     setShowProfile((prev) => !prev);
@@ -45,10 +51,13 @@ const Home = () => {
   const toggleModal = useCallback(() => {
     setModalOpen(false);
   }, []);
-
-  // if (userData) {
-  //   return <Redirect to="/login" />;
-  // }
+  console.log(userData);
+  console.log('이거다', userData !== undefined);
+  console.log(cookies.jwt);
+  console.log('이거다2', cookies.jwt === undefined);
+  if (cookies.jwt === undefined) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <HomeWrap>
