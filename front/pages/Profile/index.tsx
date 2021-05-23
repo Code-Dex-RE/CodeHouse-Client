@@ -2,8 +2,6 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import loadabel from '@loadable/component';
 
-const RoomList = loadabel(() => import('@components/RoomList'));
-
 import {
   ProfileWrap,
   Header,
@@ -60,7 +58,6 @@ const Profile = () => {
             <RoomTitle>참여중인방(제목)</RoomTitle>
             <ExitBtn>나가기</ExitBtn>
             <AddRoom>Rooms</AddRoom>
-            <RoomList />
           </RoomContainer>
         </RoomWrap>
       </MainWrap>

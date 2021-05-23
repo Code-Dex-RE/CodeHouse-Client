@@ -9,9 +9,11 @@ import axios from 'axios';
 const Login = ({ history }: RouteComponentProps) => {
   const [cookies, setCookie] = useCookies(['jwt']);
 
-  if (cookies.jwt !== undefined) {
-    return <Redirect to="/" />;
-  }
+  useEffect(() => {});
+
+  // if (cookies.jwt !== undefined) {
+  //   return <Redirect to="/" />;
+  // }
   return (
     <LoginWrap>
       <Link to="/">

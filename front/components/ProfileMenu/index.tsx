@@ -8,9 +8,8 @@ import { Link } from 'react-router-dom';
 interface Props {
   show: boolean;
   onCloseModal: (e: any) => void;
-  userName: string;
 }
-const ProfileMenu: FC<Props> = ({ show, onCloseModal, userName }) => {
+const ProfileMenu: FC<Props> = ({ show, onCloseModal }) => {
   const stopPropagation = useCallback((e) => {
     e.stopPropagation();
   }, []);
@@ -21,7 +20,6 @@ const ProfileMenu: FC<Props> = ({ show, onCloseModal, userName }) => {
     <CreateMenu onClick={onCloseModal}>
       <ModalWrap onClick={stopPropagation}>
         <ProfileWrap>
-          <ProfileIcon icon={<img src="../../../assets/profileimg.png" />} label={userName} />
           <Link to="/profile" style={{ margin: 0 }}>
             <ProfileIcon icon={<ProfileSVG />} label={'profile'} />
           </Link>

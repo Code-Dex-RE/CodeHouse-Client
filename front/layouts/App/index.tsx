@@ -9,6 +9,7 @@ const Login = loadabel(() => import('@pages/Login'));
 const SignUp = loadabel(() => import('@pages/SignUp'));
 const Join = loadabel(() => import('@pages/Join'));
 const Profile = loadabel(() => import('@pages/Profile'));
+const Room = loadabel(() => import('@pages/Room'));
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -17,8 +18,9 @@ const App = () => (
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/listroom" component={Join} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/room/:roomID" component={Room} />
       <Route exact path="/" component={Home} />
-      <Route exact path="/profile" component={Profile} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </Switch>

@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState, ChangeEvent } from 'react';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps, Redirect } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
 import { useCookies, Cookies } from 'react-cookie';
 import useInput from '@hooks/useInput';
@@ -20,14 +19,22 @@ import {
   SignUpForm,
 } from './style';
 
-const SignUp = () => {
+const SignUp = ({ history }: RouteComponentProps) => {
   const [name, onChangeName, setName] = useInput('');
   const [singUpError, setSignUpError] = useState(false);
   const [singUpSuccess, setSignUpSuccess] = useState(false);
   const [email, onChangeEmail, setEmail] = useInput('');
   const [bio, onChangeBio] = useInput('');
-
+  const [isSingUp, setIsSignUp] = useState(false);
   const [cookies, setCookie] = useCookies(['jwt']);
+  // axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.jwt}`;
+  // axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
+  // const instance = axios.create({
+  //   baseURL: 'http://localhost:8000',
+  // });
+
+  // instance.defaults.headers.common['Authorization'] = `Bearer abccccc`;
+  // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
   const config = {
     headers: { Authorization: `Bearer ${cookies.jwt}` },
@@ -48,27 +55,47 @@ const SignUp = () => {
       setName(res.data.name);
     });
   }, []);
-  console.log();
 
-  const onSubmit = useCallback(() => {
-    return axios
-      .post(`/api/auth`, bodyParameters, config)
-      .then((res) => {
-        console.log(res.headers);
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
 
-        setSignUpSuccess(true);
-      })
-      .catch((error) => {
-        setSignUpError(error.response?.data?.statusCode === 403);
-      });
-  }, [name, bio]);
+      return axios
+        .post(`/api/auth`, bodyParameters)
+        .then((res) => {
+          history.push('/');
+          console.log(res.headers);
+          setIsSignUp(true);
+        })
+        .catch((error) => {
+          setSignUpError(error.response?.data?.statusCode === 403);
+        });
+    },
+    [name, bio],
+  );
 
-  console.log('성공', singUpSuccess);
-  console.log('에러', singUpError);
+  // const onSubmit = useCallback((e) => {
+  //   e.preventDefault();
 
-  // if (userData) {
+  //   axios
+  //     .get(`/api/auth/test`)
+  //     .then((res) => {
+  //       console.log(res.status);
+  //       setIsSignUp(true);
+  //       console.log('TestGet');
+  //     })
+  //     .catch((error) => {
+  //       setSignUpError(error.response?.data?.statusCode === 403);
+  //     });
+  // }, []);
+
+  // console.log('성공', singUpSuccess);
+  // console.log('에러', singUpError);
+
+  // if (isSingUp) {
   //   return <Redirect to="/" />;
   // }
+
   return (
     <SignUpWrap>
       <Header>

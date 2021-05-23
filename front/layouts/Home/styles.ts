@@ -60,6 +60,8 @@ export const RightMenu = styled.div`
   }
 
   & > span {
+    position: relative;
+    display: inline-block;
     margin-right: 21px;
   }
 `;

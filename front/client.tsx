@@ -2,19 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from '@layouts/App';
 import { BrowserRouter } from 'react-router-dom';
-import { CookiesProvider } from 'react-cookie';
-import store from './stores/store';
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 
-// if (process.env.NODE_ENV === 'development') {
-//   const { worker } = require('./mock/server');
-//   worker.start();
-// }
-
+const cookies = new Cookies();
+axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('jwt')}`;
+axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
 render(
-  <CookiesProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </CookiesProvider>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+
   document.querySelector('#app'),
 );

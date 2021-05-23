@@ -1,100 +1,71 @@
 import styled from 'styled-components';
 
 export const CreateWrap = styled.div`
-    position: relative;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: 000000;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 export const Modal = styled.div`
-    position: absolute;
-    top: 20%; bottom: 0; left: 0; right: 0;
-    width: 50%;
-    height: 60%;
-    margin: 0 auto;
-    background-color: ffffff;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  max-height: 300px;
+  padding: 40px;
+  background-color: #fdfdfd;
 `;
 
 export const CloseBtn = styled.button`
-    position: absolute;
-    top: 10px; right: 10px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    background: url(../assets/closeBtn.png) no-repeat right;
-    background-size: 50px 50px;
-    cursor: pointer;
+  background: url(../assets/closeBtn.png) no-repeat right;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-size: 30px 30px;
+  cursor: pointer;
 `;
 
 export const Title = styled.h2`
-    width: 100%;
-    height: 20%;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #000000;
+  margin: 0;
+  margin-bottom: 14px;
 `;
 
-export const Form = styled.div`
-    position: relative;
-    width: 70%;
-    height: 30%;
-    margin: 0 auto;
-`;
+export const Form = styled.form``;
 
 export const Name = styled.input`
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 40%;
-    border: 2px solid #333;
-    font-size: 1.75rem;
+  width: 100%;
+  height: 40px;
 `;
 
 export const Descript = styled.input`
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40%;
-    border: 2px solid #333;
-    font-size: 1.75rem;
+  width: 100%;
+  height: 94px;
 `;
 
 export const BtnWrap = styled.div`
-    width: 70%;
-    height: 10%;
-    margin: 40px auto 0;
+  & > button {
+    font-size: 17px;
+  }
 `;
 export const CancelBtn = styled.button`
-    width: 39%;
-    height: 100%;
-    margin-right: 2%;
-    border: 1px solid #333;
-    border-radius: 8px;
-    font-size: 1.75rem;
-    color: #333;
-    cursor: pointer;
-    &:hover{
-        color: #333;
-        border: none;
-        background-color: #999;
-    }
+  background-color: ffffff;
+  width: 97px;
+  height: 31px;
+  border-radius: 4px;
+  margin-right: 12px;
 `;
 export const CreateBtn = styled.button`
-    width: 59%;
-    height: 100%;
-    border: none;
-    background-color: #333;
-    border-radius: 8px;
-    font-size: 1.75rem;
-    color: #fff;
-    cursor: pointer;
-    &:hover{
-        color: #333;
-        border: none;
-        background-color: #999;
-    }
+  background-color: 333333;
+  width: 128px;
+  height: 31px;
+  border-radius: 4px;
+  color: white;
+`;
+
+export const Error = styled.div`
+  color: #e01e5a;
 `;

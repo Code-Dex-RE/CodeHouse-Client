@@ -35,7 +35,6 @@ export const RefreshBtn = styled.button`
 export const RoomWrap = styled.div`
   max-width: 1160px;
   height: 60%;
-  background-color: 999999;
 `;
 
 export const CreateBtn = styled.button`
