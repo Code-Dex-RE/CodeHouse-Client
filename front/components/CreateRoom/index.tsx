@@ -25,7 +25,7 @@ interface Props {
 }
 
 const CreateRoom: FC<Props & RouteComponentProps> = ({ show, closeButton, onCloseModal, id, history }) => {
-  const socket = socketIOClient('http://localhost:3333/chat');
+  const socket = socketIOClient('http://localhost:3333/chat', { transports: ['websocket', 'polling'] });
 
   const [roomName, onChangeRoomName, setRoomname] = useInput('');
   const [roomDep, ondChangeRoomDep, setRoomDep] = useInput('');
