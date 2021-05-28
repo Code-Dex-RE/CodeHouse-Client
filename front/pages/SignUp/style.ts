@@ -3,10 +3,6 @@ import styled from 'styled-components';
 export const SignUpWrap = styled.div`
   width: 100%;
   max-width: 1160px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 `;
 
 export const Header = styled.header`
@@ -20,6 +16,24 @@ export const Header = styled.header`
   & h3 {
     margin-top: 0;
     font-size: 40px;
+  }
+  
+  @media only screen and (max-width: 1280px) {
+    & h2 {
+      font-size: 40px;
+    }
+    & h3 {
+      font-size: 30px;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    & h2 {
+      font-size: 30px;
+    }
+    & h3 {
+      font-size: 24px;
+    }
+
   }
 `;
 export const NameColum = styled.div`
@@ -60,7 +74,15 @@ margin-bottom: 74px;
 }
 `;
 
-export const SignUpForm = styled.form``;
+export const SignUpForm = styled.form`
+width: 600px;
+@media only screen and (max-width: 1280px) {
+  width: 500px;
+}
+@media only screen and (max-width: 767px) {
+  width: 400px;
+}
+`;
 
 export const Label = styled.label`
   font-size: 38px;

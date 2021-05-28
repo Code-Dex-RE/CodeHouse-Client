@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 import { LoginWrap, Logo, ContactWrap, Title, Descript, KakaoBtn, GithubBtn } from './styles';
+import { useMediaQuery } from 'react-responsive';
 import useUser from '@hooks/userHook';
 import useSWR from 'swr';
 import axios from 'axios';
@@ -56,12 +57,16 @@ const Login = ({ history }: RouteComponentProps) => {
       <ContactWrap>
         <Title>Welcome to CodeHouse!</Title>
         <Descript>Login to Enjoy CodeHouse</Descript>
-      </ContactWrap>
-      <KakaoBtn onClick={onClickOauth(1)} />
+      <KakaoBtn onClick={onClickOauth(1)}>
+        Login With KaKao
+      </KakaoBtn>
       {/* <Link to="/signup">
         <GithubBtn />
       </Link> */}
-      <GithubBtn onClick={onClickOauth(2)} />
+      <GithubBtn onClick={onClickOauth(2)}>
+        Sign in with Github
+      </GithubBtn>
+      </ContactWrap>
     </LoginWrap>
   );
 };

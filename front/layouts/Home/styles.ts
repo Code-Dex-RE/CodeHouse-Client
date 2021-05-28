@@ -3,35 +3,24 @@ import styled from 'styled-components';
 // import MoonSVG from '@assets/moon.svg'
 
 export const HomeWrap = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
   max-width: 1160px;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   margin: 0 auto;
+
 `;
 
 export const Header = styled.header`
   width: 100%;
-  height: 10%;
+  height: 50px;
   max-width: 1160px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 export const LeftMenu = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: -22px;
-
-  & a {
-    overflow: hidden;
-  }
+  float:left;
+  width: 250px;
 `;
 
 export const LogoTitle = styled.div`
@@ -40,17 +29,32 @@ export const LogoTitle = styled.div`
   background: url(../../assets/codelog.png) no-repeat left;
   background-size: 103px auto;
 
+  
+  @media only screen and (max-width: 1280px) {width: 300px;
+    background-size: 95px auto;
+  }
+  @media only screen and (max-width: 767px) {
+    background-size: 80px auto;
+  }
+
   & a {
     font-size: 43px;
     font-weight: bold;
     line-height: 43px;
     padding-left: 80px;
+    @media only screen and (max-width: 1280px) {
+      font-size: 38px;
+      padding-left: 70px;
+    }
+    @media only screen and (max-width: 767px) {
+      font-size: 28px;
+      padding-left: 60px;
+    }
   }
 `;
 
 export const RightMenu = styled.div`
-  height: 100%;
-  padding-top: 15px;
+  float:right;
   & a {
     height: 50px;
     margin-right: 35px;
@@ -60,7 +64,13 @@ export const RightMenu = styled.div`
   }
 
   & > span {
-    margin-right: 21px;
+    margin-right: 20px;
+    @media only screen and (max-width: 1280px) {width: 300px;
+      margin-right: 15px;
+    }
+    @media only screen and (max-width: 767px) {
+      margin-right: 10px;
+    }
   }
 `;
 
@@ -114,7 +124,7 @@ export const ThmemBtn = styled.button`
 // `;
 
 export const Main = styled.main`
-  max-width: 1160px;
+  width: 90%;
   margin: 0 auto;
 `;
 
@@ -122,29 +132,52 @@ export const MainTitle = styled.h2`
   font-size: 70px;
   line-height: 1;
   color: #333333;
+  br{
+    display: none;
+  }
+  @media only screen and (min-width: 1280px) {
+    font-size: 55px;
+  }
+  @media only screen and (max-width: 1024px) {
+    font-size: 55px;
+    br{
+      display: block;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 28px;
+    br{
+      display: block;
+    }
+  }
 `;
 
 export const MainContent = styled.p`
-  font-size: 34px;
+  font-size: 20px;
   color: #666666;
+  margin-bottom: 40px;
+  @media only screen and (max-width: 1024px) {
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
 
 export const MainImg = styled.img`
-  width: 1160px;
-  height: 400px;
+  width: 100%;
   border-radius: 5px;
 `;
 
 export const Ends = styled.div`
-  max-width:1160px
-  max-height:71px;
-  margin-top:20px;
-  text-align:center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
 `;
 
 export const CreateBtn = styled.button`
-  width: 575px;
-  height: 71px;
+  width: 48%;
+  height: 70px;
   margin-right: 5px;
   font-size: 35px;
   border-radius: 10px;
@@ -157,11 +190,23 @@ export const CreateBtn = styled.button`
     color: 333333;
     border: 333333;
   }
+  @media only screen and (max-width: 1024px) {
+    width: 55%;
+    margin: 5px auto;
+    display: block;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 20px;
+    width: 65%;
+    height: 50px;
+    margin: 5px auto;
+    display: block;
+  }
 `;
 export const JoinBtn = styled.button`
-  width: 575px;
-  height: 71px;
-  margin-left: 5px;
+  width: 48%;
+  height: 70px;
+  margin-left: 3%;
   font-size: 35px;
   border-radius: 10px;
   color: ffffff;
@@ -172,5 +217,17 @@ export const JoinBtn = styled.button`
     background-color: ffffff;
     color: 333333;
     border: 333333;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 55%;
+    margin: 5px auto;
+    display: block;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 20px;
+    width: 65%;
+    height: 50px;
+    margin: 5px auto;
+    display: block;
   }
 `;
