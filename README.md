@@ -1,9 +1,11 @@
 # CodeHouse
 
 ## 웹 음성 채팅
-## react java
 
 ### npm i
-### npm run build
 ### npm run dev
+
+### socket io 와 wrtc를 이용한 채팅 웹앱
+
+
 
