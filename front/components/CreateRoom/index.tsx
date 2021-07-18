@@ -30,13 +30,13 @@ const CreateRoom: FC<Props & RouteComponentProps> = ({ show, closeButton, onClos
   const [roomName, onChangeRoomName, setRoomname] = useInput('');
   const [roomDep, ondChangeRoomDep, setRoomDep] = useInput('');
 
-  const roomID = uuid.v4();
+  const roomUrl = uuid.v4();
 
-  const NewRoom = {
-    roomName: roomName,
-    roomDep: roomDep,
-    roomUrl: roomID,
-  };
+  // const NewRoom = {
+  //   roomName: roomName,
+  //   roomDep: roomDep,
+  //   roomUrl: roomID,
+  // };
 
   const stopPropagation = useCallback((e) => {
     e.stopPropagation();
@@ -47,9 +47,9 @@ const CreateRoom: FC<Props & RouteComponentProps> = ({ show, closeButton, onClos
       e.preventDefault();
 
       if (roomName !== '') {
-        socket.emit('join', NewRoom, id);
+        socket.emit('join', roomName, roomDep, roomUrl, id);
         history.push({
-          pathname: `/room/${roomID}`,
+          pathname: `/room/${roomUrl}`,
           // state: { roomName: roomName, roomDep: roomDep },
         });
       }

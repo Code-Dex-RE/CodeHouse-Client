@@ -9,8 +9,8 @@ export const CreateMenu = styled.div`
   // z-index: 1000;
 
   position: absolute;
-  top: 30px;
-  left: 0;
+  top: 43px;
+  left: -63px;
   z-index: 1000;
 `;
 

@@ -16,7 +16,7 @@ export const HomeWrap = styled.div`
 
 export const Header = styled.header`
   width: 100%;
-  height: 10%;
+  height: 13%;
   max-width: 1160px;
   margin: 0 auto;
   display: flex;
@@ -50,7 +50,7 @@ export const LogoTitle = styled.div`
 
 export const RightMenu = styled.div`
   height: 100%;
-  padding-top: 15px;
+  padding-top: 25px;
   & a {
     height: 50px;
     margin-right: 35px;
@@ -120,20 +120,23 @@ export const Main = styled.main`
   margin: 0 auto;
 `;
 
+
 export const MainTitle = styled.h2`
-  font-size: 70px;
+  font-size: 46px;
   line-height: 1;
   color: #333333;
+  margin-top: 15px;
+    margin-bottom: 0px;
 `;
 
 export const MainContent = styled.p`
-  font-size: 34px;
+  font-size: 22px;
   color: #666666;
 `;
 
 export const MainImg = styled.img`
   width: 1160px;
-  height: 400px;
+  height: 350px;
   border-radius: 5px;
 `;
 
@@ -149,15 +152,16 @@ export const CreateBtn = styled.button`
   height: 71px;
   margin-right: 5px;
   font-size: 35px;
-  border-radius: 10px;
+  border-radius: 5px;
   color: FFFFFF;
-  background-color: 333333;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border:none;
+  background-color: #3F6797;
+  // box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   &:hover {
-    background-color: ffffff;
-    color: 333333;
-    border: 333333;
+    background-color: #e3e3e3;
+    color: #fff;
+    border: none;
   }
 `;
 export const JoinBtn = styled.button`
@@ -165,14 +169,15 @@ export const JoinBtn = styled.button`
   height: 71px;
   margin-left: 5px;
   font-size: 35px;
-  border-radius: 10px;
+  border-radius: 5px;
+  border:none;
   color: ffffff;
-  background-color: 333333;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  background-color: #3F6797;
+  // box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   &:hover {
-    background-color: ffffff;
-    color: 333333;
-    border: 333333;
+    background-color: #e3e3e3;
+    color: #fff;
+    border: none;
   }
 `;

@@ -12,6 +12,7 @@ const Profile = loadabel(() => import('@pages/Profile'));
 const Room = loadabel(() => import('@pages/Room'));
 const queryClient = new QueryClient();
 
+
 const App = () => (
   <Switch>
     <QueryClientProvider client={queryClient}>
@@ -20,7 +21,7 @@ const App = () => (
       <Route path="/listroom" component={Join} />
       <Route path="/profile" component={Profile} />
       <Route path="/room/:roomID" component={Room} />
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Home}  />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </Switch>

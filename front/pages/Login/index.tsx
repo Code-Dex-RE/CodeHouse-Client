@@ -23,8 +23,9 @@ const Login = ({ history }: RouteComponentProps) => {
         <Title>Welcome to CodeHouse!</Title>
         <Descript>Login to Enjoy CodeHouse</Descript>
       </ContactWrap>
-      <KakaoBtn />
-
+      <a href="/api/auth/kakao">
+        <KakaoBtn />
+      </a>
       <a href="/api/auth/github">
         <GithubBtn />
       </a>
