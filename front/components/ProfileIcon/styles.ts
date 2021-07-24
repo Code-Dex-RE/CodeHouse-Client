@@ -6,6 +6,7 @@ export const Button = styled.button`
   cursor: pointer;
   border-style: none;
   text-align: left;
+  width: 100%;
   background-color: #fdfdfd;
   & > span {
     vertical-align: super;

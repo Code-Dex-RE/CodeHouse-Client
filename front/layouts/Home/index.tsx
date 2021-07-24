@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
-import { Link, Redirect, Router } from 'react-router-dom';
-import useUser from '@hooks/userHook';
-
-import loadabel from '@loadable/component';
+import React, { useCallback, useEffect, useState,useRef } from 'react';
+import { Link, Redirect, Router, Switch } from 'react-router-dom';
+import { QueryClient, useQuery, useQueryClient } from 'react-query';
+import axios, { AxiosResponse } from 'axios';
+import gravatar from 'gravatar';
 import { ReactComponent as LightIcon } from '@assets/sun.svg';
 import { ReactComponent as DarkIcon } from '@assets/moon.svg';
+
 import CreateRoom from '@components/CreateRoom';
 import {
   CreateBtn,
@@ -20,17 +21,44 @@ import {
   MainTitle,
   RightMenu,
   HomeWrap,
-  ProfileModal,
   ProfileImg,
 } from './styles';
 import ProfileMenu from '@components/ProfileMenu';
+import { idText } from 'typescript';
+
+export interface User {
+  id: number;
+  email: string;
+  name: string;
+}
 
 const Home = () => {
-  const { isLogIn, login, userData } = useUser();
   const [showProfile, setShowProfile] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+// const queryClient = new QueryClient();
 
-  // setUserData(login);
+  
+  const fetchUser = async () => {
+
+     await new Promise (res=>setInterval(res,0))
+     const {data}=await axios.get('/api/auth/me/jwt')
+     return data;
+
+ 
+  };
+ 
+  
+  const {data: userData,isLoading,error } = useQuery<User , ErrorConstructor>(
+    ['users'],
+    fetchUser,
+    {
+
+      retry: 0,
+      // staleTime: 0,
+    },
+
+  );
+
 
   const onClickProfile = useCallback(() => {
     setShowProfile((prev) => !prev);
@@ -43,12 +71,20 @@ const Home = () => {
   const toggleModal = useCallback(() => {
     setModalOpen(false);
   }, []);
+ 
+  // console.log('유저네임', userData.name);
 
-  console.log(userData);
-  if (!isLogIn) {
+  if (isLoading) {
+    return <p></p>;
+  }
+  if (!userData) {
     return <Redirect to="/login" />;
   }
+  if (error) return <p>Somethin wnt wrong...</p>;
 
+   
+  console.log('유저네임', userData?.name);
+ 
   return (
     <HomeWrap>
       <Header>
@@ -60,10 +96,10 @@ const Home = () => {
         <RightMenu>
           {userData && (
             <span onClick={onClickProfile}>
-              <ProfileImg src="../../assets/profileimg.png" />
+             <ProfileImg src={gravatar.url(userData.email,{s:'24px',d:'retro'})} alt={userData.name} title={userData.name}/>
+              {showProfile && <ProfileMenu show={showProfile} onCloseModal={onClickProfile} />}
             </span>
           )}
-          {showProfile && <ProfileMenu show={showProfile} onCloseModal={onClickProfile} userName={userData.name} />}
           <ThmemBtn>
             <DarkIcon />
           </ThmemBtn>
@@ -71,6 +107,7 @@ const Home = () => {
       </Header>
 
       <Main>
+        {userData?.name && <MainTitle>{userData.name} 님 반갑습니다!</MainTitle>}
         <MainTitle>다양한 개발자들과 소통해보세요!</MainTitle>
         <MainContent>
           코더하우스에서 다양한 개발자들과 소통하고 프로젝트도 Try 해보세요.
@@ -85,7 +122,7 @@ const Home = () => {
           </Link>
         </Ends>
       </Main>
-      {modalOpen ? <CreateRoom show={modalOpen} onCloseModal={toggleModal}></CreateRoom> : null}
+      {modalOpen ? <CreateRoom show={modalOpen} onCloseModal={toggleModal} id={userData?.id}></CreateRoom> : null}
     </HomeWrap>
   );
 };
