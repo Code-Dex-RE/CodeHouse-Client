@@ -96,12 +96,12 @@ const config: Configuration = {
     }),
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
 
-    new HtmlWebpackPlugin({
-      template: './index.html',
-      filename: 'index.html',
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './index.html',
+    //   filename: 'index.html',
+    // }),
   ],
-  entry: { 'js/app': './client' },
+  entry: { app: './client' },
 
   output: {
     path: path.join(__dirname, 'dist'),

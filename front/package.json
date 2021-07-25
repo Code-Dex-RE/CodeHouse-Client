@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
+  "homepage": ".",
   "license": "ISC",
   "dependencies": {
     "@loadable/component": "^5.14.1",
